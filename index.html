@@ -840,10 +840,51 @@ function updateAuthModal() {
   document.getElementById("switchText").textContent = isSignup ? "Already have an account?" : "Don't have an account?";
   document.getElementById("switchAuth").textContent = isSignup ? "Log in" : "Sign up";
 }
+
 document.getElementById("authForm").addEventListener("submit", function(event) {
   event.preventDefault();
-  alert("This is a frontend demo. Login and signup need a secure authentication backend before real accounts can be created.");
+
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+  const name = document.getElementById("authName").value.trim();
+
+  if (authMode === "signup") {
+    if (!name) {
+      alert("Please enter your name.");
+      return;
+    }
+
+    localStorage.setItem("havenly_user", JSON.stringify({
+      name: name,
+      email: email
+    }));
+
+    alert("Account created for this browser! You can now log in.");
+    authMode = "login";
+    updateAuthModal();
+    document.getElementById("authEmail").value = email;
+    document.getElementById("authPassword").value = "";
+    return;
+  }
+
+  const user = JSON.parse(localStorage.getItem("havenly_user") || "null");
+
+  if (user && user.email === email) {
+    alert("Welcome back, " + user.name + "! You are now logged in.");
+    closeModal();
+    document.querySelector(".nav-actions").innerHTML =
+      '<span style="font-weight:bold;color:#087e8b">Welcome, ' +
+      user.name.replace(/[&<>"']/g, "") +
+      '</span> <button class="btn small-btn" onclick="logoutUser()">Log out</button>';
+  } else {
+    alert("Account not found in this browser. Please sign up first.");
+  }
 });
+
+function logoutUser() {
+  location.reload();
+}
+
 document.addEventListener("keydown", event => {
   if (event.key === "Escape") closeModal();
 });

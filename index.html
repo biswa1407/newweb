@@ -1,341 +1,855 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Havenly | Luxury Hotel Booking</title>
-
+<title>Havenly | Stays Worth the Journey</title>
+<meta name="description" content="Discover beautiful hotels, international escapes, luxury stays, and unforgettable journeys with Havenly.">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#f7f6f0;color:#173d31}
-header{display:flex;justify-content:space-between;align-items:center;padding:22px 7%;background:#fff;position:sticky;top:0;z-index:10}
-.logo{font-size:29px;font-weight:bold;color:#173d31}
-nav{display:flex;gap:24px;align-items:center}
-nav a{text-decoration:none;color:#173d31;font-size:14px}
-button{cursor:pointer;border:0;padding:12px 20px;border-radius:30px;font-weight:bold}
-.primary{background:#173d31;color:white}
-.lime{background:#d7f36b;color:#173d31}
-.hero{min-height:520px;margin:25px auto;width:90%;border-radius:25px;background:linear-gradient(90deg,#10251fee,#10251f35),url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1800&q=85') center/cover;display:flex;align-items:center;padding:7%;color:white}
-.hero-content{max-width:650px}
-.hero h1{font-size:clamp(42px,7vw,76px);line-height:1.05;margin:22px 0;letter-spacing:-3px}
-.hero h1 span{color:#d7f36b;font-family:Georgia,serif}
-.hero p{line-height:1.8;color:#e5eee8;margin-bottom:25px}
-.search{background:white;border-radius:18px;padding:20px;width:85%;margin:-50px auto 40px;position:relative;box-shadow:0 12px 40px #0001;display:flex;gap:12px;align-items:end;flex-wrap:wrap}
-.search label{font-size:11px;display:block;margin-bottom:8px;color:#657168;font-weight:bold}
-.search input,.search select{padding:12px;border:1px solid #ddd;border-radius:8px;width:100%;min-width:130px}
-.search .field{flex:1}
-section{padding:65px 7%}
-.heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}
-.heading h2{font-size:clamp(28px,4vw,42px);margin-top:10px;letter-spacing:-1px}
-.heading p{color:#69756e;font-size:14px;line-height:1.6;max-width:350px}
-.tag{font-size:11px;letter-spacing:2px;color:#64804b;font-weight:bold;text-transform:uppercase}
-.slider{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:15px;scrollbar-width:thin}
-.hotel{flex:0 0 310px;background:white;border-radius:18px;overflow:hidden;scroll-snap-align:start;box-shadow:0 8px 25px #00000008}
-.hotel img{width:100%;height:215px;object-fit:cover}
-.hotel-info{padding:20px}
-.hotel h3{font-size:20px;margin:10px 0}
-.muted{color:#778078;font-size:13px;line-height:1.7}
-.stars{color:#d99b35;font-size:14px;margin:10px 0}
-.amenities{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}
-.amenities span{font-size:11px;background:#eff2e9;padding:7px 9px;border-radius:6px}
-.price-row{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #eee;padding-top:15px;gap:10px}
-.price{font-size:20px;font-weight:bold}
-.price small{font-size:10px;display:block;color:#777;font-weight:normal}
-.range-section{background:#e9ede3}
-.range{flex:0 0 235px;padding:25px;border-radius:18px;background:white;scroll-snap-align:start;min-height:205px;border:1px solid #e4e7df}
-.range .emoji{font-size:30px}
-.range h3{margin:20px 0 10px}
-.range strong{display:block;margin-top:20px;font-size:13px}
-.offers{background:#f7f6f0}
-.offer{flex:0 0 280px;padding:28px;border-radius:20px;background:#173d31;color:white;scroll-snap-align:start;min-height:285px;display:flex;flex-direction:column;justify-content:space-between}
-.offer:nth-child(2){background:#d7f0bb;color:#173d31}
-.offer:nth-child(3){background:#f2d6c3;color:#492c20}
-.offer:nth-child(4){background:#dcd8f3;color:#302b49}
-.offer .discount{font-size:40px;font-weight:bold;margin:25px 0 10px}
-.offer p{font-size:13px;line-height:1.7;margin:12px 0 20px}
-.offer button{align-self:flex-start;background:white;color:#173d31}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
-.about img{width:100%;height:400px;object-fit:cover;border-radius:22px}
-.about h2{font-size:clamp(32px,4vw,48px);margin:15px 0}
-.about p{line-height:1.9;color:#69756e;font-size:14px}
-.benefits{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:22px;font-size:13px;font-weight:bold}
-.reviews{flex:0 0 310px;background:white;padding:25px;border-radius:18px;scroll-snap-align:start}
-.reviews h3{margin-bottom:6px}
-.reviews blockquote{font-family:Georgia,serif;font-size:18px;line-height:1.7;margin:20px 0}
-.rating-band{background:#173d31;color:white;margin:20px 7%;padding:40px;border-radius:22px;display:flex;justify-content:space-around;gap:25px;flex-wrap:wrap}
-.rating-band strong{display:block;font-size:32px;margin-bottom:8px}
-.rating-band span{font-size:12px;color:#c8d7cb}
-.cta{background:#d7f36b;padding:45px 7%;display:flex;justify-content:space-between;align-items:center;gap:25px}
-.cta h2{font-size:clamp(27px,4vw,40px);margin-bottom:12px}
-footer{background:#10251f;color:white;padding:50px 7%}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
-footer h3,footer h4{margin-bottom:15px}
-footer p,footer a{font-size:13px;line-height:2;color:#bdcbbf}
-footer a{display:block;text-decoration:none}
-.copyright{margin-top:35px;border-top:1px solid #ffffff22;padding-top:20px;font-size:11px;color:#aab8ad}
-.modal{display:none;position:fixed;inset:0;background:#000b;z-index:30;align-items:center;justify-content:center;padding:20px}
-.modal-box{background:white;padding:30px;border-radius:20px;width:100%;max-width:420px;position:relative;max-height:90vh;overflow:auto}
-.modal-box h2{margin-bottom:10px}
-.modal-box p{font-size:13px;color:#69756e;line-height:1.6;margin-bottom:15px}
-.modal-box label{display:block;margin:13px 0 7px;font-size:12px;font-weight:bold}
-.modal-box input,.modal-box select,.modal-box textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px}
-.modal-box textarea{min-height:90px}
-.modal-box .primary{width:100%;margin-top:18px}
-.close{position:absolute;right:15px;top:12px;background:#eee;font-size:20px;padding:6px 12px}
-.switch{text-align:center;margin-top:18px;font-size:13px}
-.switch a{color:#35734b;cursor:pointer;font-weight:bold}
-.notice{font-size:12px;color:#69756e;margin-top:12px;line-height:1.5}
-@media(max-width:750px){
- header{padding:18px 5%;flex-wrap:wrap;gap:15px}
- nav{gap:12px;flex-wrap:wrap}
- nav a{font-size:12px}
- .hero{width:94%;min-height:450px;padding:7%}
- .search{width:92%;margin-top:-25px}
- section{padding:45px 5%}
- .heading{align-items:flex-start;flex-direction:column}
- .about{grid-template-columns:1fr}
- .about img{height:300px}
- .rating-band{margin:10px 5%;padding:25px}
- .cta{padding:35px 5%;align-items:flex-start;flex-direction:column}
- .footer-grid{grid-template-columns:1fr 1fr}
+:root {
+  --primary: #087e8b;
+  --dark: #12343b;
+  --accent: #ffb703;
+  --light: #f4f9fa;
+  --text: #24363b;
+  --muted: #65777b;
+  --white: #fff;
+  --shadow: 0 12px 35px rgba(14, 55, 65, .10);
 }
-@media(max-width:430px){
- nav{width:100%;justify-content:space-between}
- .hero h1{letter-spacing:-2px}
- .search .field{flex:1 1 42%}
- .footer-grid{grid-template-columns:1fr}
- .rating-band{justify-content:flex-start}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  background: #fff;
+}
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+img { max-width: 100%; display: block; }
+.container { width: min(1180px, 92%); margin: auto; }
+section { padding: 75px 0; }
+.section-heading { text-align: center; margin-bottom: 35px; }
+.section-heading h2 { font-size: clamp(27px, 4vw, 38px); color: var(--dark); }
+.section-heading p { color: var(--muted); margin-top: 8px; }
+.eyebrow {
+  color: var(--primary); text-transform: uppercase;
+  letter-spacing: 2px; font-size: 12px; font-weight: 800;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; border: 0; border-radius: 9px;
+  background: var(--primary); color: white;
+  padding: 12px 19px; font-weight: 700; transition: .2s;
+}
+.btn:hover { background: #066873; transform: translateY(-2px); }
+.btn-light { background: white; color: var(--dark); }
+.btn-light:hover { background: #eefafa; }
+.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+.btn-outline:hover { color: white; }
+.small-btn { padding: 9px 13px; font-size: 13px; }
+
+/* HEADER */
+header {
+  height: 76px; display: flex; align-items: center;
+  background: white; position: sticky; top: 0; z-index: 1000;
+  box-shadow: 0 3px 20px rgba(0,0,0,.06);
+}
+.navbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.logo { font-size: 28px; font-weight: 900; color: var(--dark); letter-spacing: -1px; }
+.logo span { color: var(--primary); }
+.nav-links { display: flex; align-items: center; gap: 22px; }
+.nav-links a { font-size: 14px; font-weight: 700; color: #3c555a; }
+.nav-links a:hover { color: var(--primary); }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.menu-toggle { display: none; background: none; border: 0; font-size: 26px; }
+
+/* SLIDING HERO BANNER */
+.hero-slider {
+  min-height: 590px; height: min(72vh, 700px);
+  position: relative; overflow: hidden; background: var(--dark);
+}
+.hero-slide {
+  position: absolute; inset: 0; display: flex; align-items: center;
+  padding: 60px max(6%, calc((100% - 1180px)/2));
+  background-size: cover; background-position: center;
+  opacity: 0; visibility: hidden; transition: opacity .8s ease, visibility .8s;
+}
+.hero-slide::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(5,25,32,.82), rgba(5,25,32,.35) 62%, rgba(5,25,32,.08));
+}
+.hero-slide.active { opacity: 1; visibility: visible; }
+.hero-content { position: relative; z-index: 1; color: white; max-width: 650px; }
+.hero-content .eyebrow { color: #ffdb78; }
+.hero-content h1 {
+  font-size: clamp(38px, 6vw, 68px); line-height: 1.08;
+  margin: 14px 0 18px; letter-spacing: -1.5px;
+}
+.hero-content p { max-width: 540px; font-size: 17px; color: #f1f6f7; margin-bottom: 25px; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 5; border: 1px solid rgba(255,255,255,.6);
+  color: white; background: rgba(0,0,0,.28);
+  width: 44px; height: 44px; border-radius: 50%; font-size: 24px;
+}
+.hero-arrow:hover { background: var(--primary); }
+.hero-prev { left: 18px; } .hero-next { right: 18px; }
+.hero-dots {
+  position: absolute; bottom: 23px; left: 50%; transform: translateX(-50%);
+  z-index: 5; display: flex; gap: 9px;
+}
+.hero-dot { border: 0; height: 9px; width: 9px; border-radius: 50%; background: #ffffff88; }
+.hero-dot.active { background: white; width: 27px; border-radius: 8px; }
+
+/* SEARCH */
+.search-wrap { position: relative; z-index: 10; margin-top: -38px; }
+.search-box {
+  background: white; padding: 22px; border-radius: 16px;
+  box-shadow: var(--shadow); display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr auto; gap: 13px; align-items: end;
+}
+.field label { display: block; font-size: 12px; font-weight: 800; margin-bottom: 6px; color: var(--dark); }
+.field input, .field select, .field textarea {
+  width: 100%; min-width: 0; border: 1px solid #dce6e8;
+  padding: 12px; border-radius: 8px; background: white; outline: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--primary); }
+
+/* CARDS */
+.light-section { background: var(--light); }
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.stay-card {
+  background: white; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 7px 25px rgba(14,55,65,.07); transition: .25s;
+}
+.stay-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.stay-card img { width: 100%; height: 220px; object-fit: cover; }
+.card-body { padding: 18px; }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.card-body h3 { color: var(--dark); font-size: 19px; line-height: 1.35; }
+.location { font-size: 13px; color: var(--muted); margin: 7px 0 12px; }
+.rating { white-space: nowrap; color: #9a6900; background: #fff5d7; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 800; }
+.card-bottom { border-top: 1px solid #edf1f2; margin-top: 15px; padding-top: 15px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.price { color: var(--dark); font-size: 20px; font-weight: 900; }
+.price small { display: block; color: var(--muted); font-size: 11px; font-weight: 400; }
+.slider {
+  display: grid; grid-auto-columns: minmax(270px, 1fr);
+  grid-auto-flow: column; gap: 20px; overflow-x: auto;
+  padding: 5px 2px 20px; scroll-snap-type: x mandatory;
+}
+.slider .stay-card { scroll-snap-align: start; }
+.slider::-webkit-scrollbar { height: 7px; }
+.slider::-webkit-scrollbar-thumb { background: #b8d4d8; border-radius: 8px; }
+.slider .stay-card img { height: 200px; }
+
+/* HOTEL RANGES */
+.range-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; }
+.range-card {
+  min-height: 220px; border-radius: 13px; overflow: hidden;
+  position: relative; background-size: cover; background-position: center;
+  display: flex; align-items: end; color: white; padding: 20px;
+}
+.range-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent, #071e28d9); }
+.range-card div { position: relative; }
+.range-card h3 { font-size: 21px; }
+.range-card p { font-size: 13px; }
+
+/* OFFERS */
+.offer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.offer-card {
+  padding: 30px; border-radius: 16px; min-height: 200px;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+  background: linear-gradient(135deg, #dff6f4, #f6fbfb);
+}
+.offer-card:nth-child(2) { background: linear-gradient(135deg, #fff0d2, #fffaf0); }
+.offer-card h3 { font-size: 24px; margin: 8px 0; color: var(--dark); }
+.offer-card p { color: var(--muted); margin-bottom: 15px; }
+
+/* REVIEWS */
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.review-card { padding: 25px; background: white; border: 1px solid #e5eeee; border-radius: 13px; }
+.review-stars { color: #edaa17; letter-spacing: 3px; margin-bottom: 12px; }
+.review-card p { color: var(--muted); font-size: 14px; }
+.review-person { margin-top: 18px; font-weight: 800; color: var(--dark); }
+.review-person small { display: block; font-weight: 400; color: var(--muted); }
+.stats-band { background: var(--dark); color: white; padding: 35px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; gap: 20px; }
+.stats-grid h3 { font-size: 30px; color: #ffcf60; }
+.stats-grid p { font-size: 13px; color: #d3e1e3; }
+
+/* CTA */
+.cta { background: var(--primary); color: white; text-align: center; padding: 55px 20px; }
+.cta h2 { font-size: clamp(27px, 4vw, 38px); margin-bottom: 10px; }
+.cta p { margin-bottom: 22px; }
+
+/* CONTACT SUPPORT */
+.support-section { background: #f4f9fa; }
+.support-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+.contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.contact-card { background: white; border: 1px solid #e4eeee; border-radius: 12px; padding: 20px; overflow-wrap: anywhere; }
+.contact-icon { font-size: 25px; margin-bottom: 8px; }
+.contact-card h3 { color: var(--dark); font-size: 16px; margin-bottom: 5px; }
+.contact-card p, .contact-card a { color: var(--muted); font-size: 13px; }
+.contact-card a:hover { color: var(--primary); }
+.support-form { background: white; border-radius: 15px; padding: 25px; box-shadow: var(--shadow); }
+.support-form h3 { color: var(--dark); font-size: 22px; margin-bottom: 5px; }
+.support-form > p { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+.support-form .field { margin-bottom: 14px; }
+.support-form textarea { resize: vertical; min-height: 110px; }
+
+/* FOOTER */
+footer { background: #0c252b; color: white; padding: 48px 0 20px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 28px; }
+footer .logo { color: white; display: inline-block; margin-bottom: 12px; }
+footer p, footer a { color: #c3d3d6; font-size: 13px; }
+footer h3 { font-size: 16px; margin-bottom: 13px; }
+.footer-links { display: grid; gap: 8px; }
+.footer-links a:hover { color: #ffcf60; }
+.footer-bottom { border-top: 1px solid #ffffff20; margin-top: 30px; padding-top: 18px; text-align: center; color: #aabec1; font-size: 12px; }
+
+/* LOGIN / SIGNUP MODAL */
+.modal {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(5,25,32,.72); align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal.show { display: flex; }
+.modal-box {
+  background: white; width: min(430px, 100%); padding: 30px;
+  border-radius: 16px; position: relative; max-height: 90vh; overflow-y: auto;
+}
+.modal-close { position: absolute; top: 12px; right: 15px; border: 0; background: none; font-size: 27px; }
+.modal-box h2 { color: var(--dark); margin-bottom: 5px; }
+.modal-box > p { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+.modal-box .field { margin-bottom: 14px; }
+.modal-box .btn { width: 100%; }
+.modal-switch { text-align: center; margin-top: 17px; font-size: 13px; }
+.text-button { background: none; border: 0; color: var(--primary); font-weight: 800; }
+.notice { font-size: 12px; color: var(--muted); margin-top: 12px; }
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: 12px; }
+  .search-box { grid-template-columns: repeat(2, 1fr); }
+  .search-box .btn { grid-column: span 2; }
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .range-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  header { height: 68px; }
+  .logo { font-size: 25px; }
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none; position: absolute; top: 68px; left: 0; right: 0;
+    background: white; padding: 18px 5%; box-shadow: var(--shadow);
+    flex-direction: column; align-items: stretch; gap: 15px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-actions .btn { padding: 9px 11px; font-size: 12px; }
+  .hero-slider { min-height: 520px; height: 68vh; }
+  .hero-slide { padding: 40px 8%; background-position: center; }
+  .hero-content h1 { font-size: 42px; }
+  .hero-content p { font-size: 15px; }
+  .hero-prev { left: 8px; } .hero-next { right: 8px; }
+  .hero-arrow { width: 35px; height: 35px; font-size: 19px; }
+  section { padding: 55px 0; }
+  .search-box { grid-template-columns: 1fr; }
+  .search-box .btn { grid-column: auto; }
+  .card-grid, .review-grid, .offer-grid, .support-grid { grid-template-columns: 1fr; }
+  .range-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .range-card { min-height: 170px; padding: 14px; }
+  .range-card h3 { font-size: 17px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px 18px; }
+  .contact-cards { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) {
+  .nav-actions .btn-outline { display: none; }
+  .hero-content h1 { font-size: 36px; }
+  .contact-cards, .footer-grid { grid-template-columns: 1fr; }
+  .range-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
-
 <body>
 
 <header>
- <a href="#home" class="logo" style="text-decoration:none">✳ havenly.</a>
- <nav>
-  <a href="#hotels">Hotels</a>
-  <a href="#ranges">Hotel ranges</a>
-  <a href="#offers">Offers</a>
-  <a href="#reviews">Reviews</a>
- </nav>
- <button class="primary" onclick="showModal('login')">Login / Sign up</button>
+  <div class="container navbar">
+    <a class="logo" href="#home">havenly<span>.</span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#hotels" onclick="closeMenu()">Handpicked Stays</a>
+      <a href="#international" onclick="closeMenu()">International</a>
+      <a href="#ranges" onclick="closeMenu()">Collections</a>
+      <a href="#offers" onclick="closeMenu()">Offers</a>
+      <a href="#support" onclick="closeMenu()">Contact Support</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn btn-outline small-btn" onclick="openModal('login')">Log in</button>
+      <button class="btn small-btn" onclick="openModal('signup')">Sign up</button>
+      <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">☰</button>
+    </div>
+  </div>
 </header>
 
 <main id="home">
-<div class="hero">
- <div class="hero-content">
-  <span class="tag" style="color:#d7f36b">YOUR NEXT CHAPTER STARTS HERE</span>
-  <h1>Stay somewhere<br><span>extraordinary.</span></h1>
-  <p>Discover beautiful hotels, luxurious resorts, peaceful escapes and unforgettable experiences. Your next adventure begins here.</p>
-  <a href="#hotels"><button class="lime">Explore Hotels ↗</button></a>
-  <a href="#offers"><button style="background:#ffffff22;color:white;border:1px solid #ffffff55">View Offers</button></a>
- </div>
-</div>
 
-<form class="search" id="searchForm">
- <div class="field">
-  <label>DESTINATION</label>
-  <input id="destination" placeholder="Where to?" list="places">
-  <datalist id="places"><option>Goa</option><option>Jaipur</option><option>Manali</option><option>Kerala</option><option>Udaipur</option></datalist>
- </div>
- <div class="field"><label>CHECK IN</label><input id="checkin" type="date" required></div>
- <div class="field"><label>CHECK OUT</label><input id="checkout" type="date" required></div>
- <div class="field"><label>GUESTS</label><select id="guests"><option>2 Adults</option><option>1 Adult</option><option>Family</option><option>4 Adults</option></select></div>
- <button class="primary" type="submit">Search ↗</button>
-</form>
+  <!-- FOUR-SLIDE HERO BANNER -->
+  <section class="hero-slider" id="heroSlider" aria-label="Featured travel destinations">
+    <article class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=2000&q=85')">
+      <div class="hero-content">
+        <span class="eyebrow">Your next escape starts here</span>
+        <h1>Find your own little piece of paradise.</h1>
+        <p>Discover beautiful stays, thoughtful experiences, and destinations that make every journey special.</p>
+        <div class="hero-buttons">
+          <a class="btn" href="#hotels">Explore handpicked stays</a>
+          <a class="btn btn-light" href="#international">Explore the world</a>
+        </div>
+      </div>
+    </article>
 
-<section id="hotels">
- <div class="heading">
-  <div><span class="tag">HANDPICKED FOR YOU</span><h2>Stays worth the journey.</h2></div>
-  <p>Explore beautiful stays for every kind of traveller.</p>
- </div>
- <div class="slider" id="hotelSlider">
-  <article class="hotel" data-place="goa">
-   <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80" alt="Luxury tropical hotel">
-   <div class="hotel-info"><div class="stars">★★★★★ 4.9 (328 reviews)</div><h3>Casa Solana Retreat</h3><p class="muted">📍 Goa · Beachside resort</p><div class="amenities"><span>Swimming pool</span><span>Spa</span><span>Breakfast</span></div><div class="price-row"><div class="price">₹6,499<small>per night</small></div><button class="primary" onclick="book('Casa Solana Retreat',6499)">Book</button></div></div>
-  </article>
-  <article class="hotel" data-place="jaipur">
-   <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Elegant hotel">
-   <div class="hotel-info"><div class="stars">★★★★★ 4.8 (214 reviews)</div><h3>The Pink Courtyard</h3><p class="muted">📍 Jaipur · Heritage hotel</p><div class="amenities"><span>Heritage</span><span>Restaurant</span><span>City tours</span></div><div class="price-row"><div class="price">₹4,899<small>per night</small></div><button class="primary" onclick="book('The Pink Courtyard',4899)">Book</button></div></div>
-  </article>
-  <article class="hotel" data-place="manali">
-   <img src="https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=800&q=80" alt="Mountain retreat">
-   <div class="hotel-info"><div class="stars">★★★★★ 4.9 (186 reviews)</div><h3>Pine & Peak Lodge</h3><p class="muted">📍 Manali · Mountain view</p><div class="amenities"><span>Fireplace</span><span>Mountain view</span><span>Cafe</span></div><div class="price-row"><div class="price">₹5,299<small>per night</small></div><button class="primary" onclick="book('Pine & Peak Lodge',5299)">Book</button></div></div>
-  </article>
-  <article class="hotel" data-place="kerala">
-   <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=800&q=80" alt="Waterfront resort">
-   <div class="hotel-info"><div class="stars">★★★★★ 4.7 (159 reviews)</div><h3>Backwater Bloom</h3><p class="muted">📍 Kerala · Waterfront stay</p><div class="amenities"><span>Waterfront</span><span>Garden</span><span>Local cuisine</span></div><div class="price-row"><div class="price">₹7,199<small>per night</small></div><button class="primary" onclick="book('Backwater Bloom',7199)">Book</button></div></div>
-  </article>
-  <article class="hotel" data-place="udaipur">
-   <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" alt="Luxury hotel suite">
-   <div class="hotel-info"><div class="stars">★★★★★ 4.9 (273 reviews)</div><h3>Lakeview House</h3><p class="muted">📍 Udaipur · Lake view</p><div class="amenities"><span>Lake view</span><span>Rooftop</span><span>Dining</span></div><div class="price-row"><div class="price">₹8,499<small>per night</small></div><button class="primary" onclick="book('Lakeview House',8499)">Book</button></div></div>
-  </article>
- </div>
- <p id="searchMessage" class="notice"></p>
-</section>
+    <article class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=2000&q=85')">
+      <div class="hero-content">
+        <span class="eyebrow">Beach escapes</span>
+        <h1>Wake up where the ocean meets the sky.</h1>
+        <p>Find your beachfront hideaway, soak up the sunshine, and let the everyday fade away.</p>
+        <div class="hero-buttons">
+          <a class="btn" href="#international">Discover beach stays</a>
+          <a class="btn btn-light" href="#offers">See special offers</a>
+        </div>
+      </div>
+    </article>
 
-<section class="range-section" id="ranges">
- <div class="heading"><div><span class="tag">SOMETHING FOR EVERY BUDGET</span><h2>Choose your comfort level.</h2></div><p>From affordable stays to exceptional luxury.</p></div>
- <div class="slider">
-  <article class="range"><div class="emoji">☀️</div><h3>Budget Hotels</h3><p class="muted">Affordable, clean and comfortable stays.</p><strong>₹1,000–₹2,500 / night</strong></article>
-  <article class="range"><div class="emoji">🏨</div><h3>Standard Hotels</h3><p class="muted">Essential amenities with extra comfort.</p><strong>₹2,500–₹5,000 / night</strong></article>
-  <article class="range"><div class="emoji">✨</div><h3>Premium Hotels</h3><p class="muted">Great service, design and dining.</p><strong>₹5,000–₹10,000 / night</strong></article>
-  <article class="range"><div class="emoji">👑</div><h3>Luxury Hotels</h3><p class="muted">Exceptional suites and premium service.</p><strong>₹10,000+ / night</strong></article>
-  <article class="range"><div class="emoji">🌴</div><h3>Resorts & Villas</h3><p class="muted">Private spaces for families and groups.</p><strong>₹6,000+ / night</strong></article>
- </div>
-</section>
+    <article class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=85')">
+      <div class="hero-content">
+        <span class="eyebrow">Luxury, made personal</span>
+        <h1>Extraordinary stays. Unforgettable memories.</h1>
+        <p>From elegant resorts to peaceful retreats, discover stays worth travelling for.</p>
+        <div class="hero-buttons">
+          <a class="btn" href="#ranges">Explore luxury collections</a>
+          <button class="btn btn-light" onclick="openModal('signup')">Join Havenly</button>
+        </div>
+      </div>
+    </article>
 
-<section id="offers">
- <div class="heading"><div><span class="tag">SPECIAL DEALS</span><h2>More memories, better offers.</h2></div><p>Packages made for celebrations and quality time.</p></div>
- <div class="slider">
-  <article class="offer"><div><span>👨‍👩‍👧‍👦 FAMILY SPECIAL</span><div class="discount">20% OFF</div><h3>Family Holiday Pack</h3><p>Family rooms, breakfast packages and kid-friendly experiences.</p></div><button onclick="offer('FAMILY20')">Explore Offer ↗</button></article>
-  <article class="offer"><div><span>🎉 FESTIVE COLLECTION</span><div class="discount">25% OFF</div><h3>Festival Getaway</h3><p>Celebrate Diwali, Holi and holidays with special stays and meals.</p></div><button onclick="offer('FESTIVE25')">Explore Offer ↗</button></article>
-  <article class="offer"><div><span>❤️ COUPLE SPECIAL</span><div class="discount">15% OFF</div><h3>Romantic Escape</h3><p>Enjoy sunset dinners, peaceful rooms and memorable experiences.</p></div><button onclick="offer('LOVE15')">Explore Offer ↗</button></article>
-  <article class="offer"><div><span>📅 PLAN AHEAD</span><div class="discount">10% OFF</div><h3>Early Bird Deal</h3><p>Book in advance and save on your next holiday.</p></div><button onclick="offer('EARLY10')">Explore Offer ↗</button></article>
- </div>
- <p class="notice">All offers and discount codes are examples. Actual terms and availability must be confirmed.</p>
-</section>
+    <article class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=2000&q=85')">
+      <div class="hero-content">
+        <span class="eyebrow">International picks</span>
+        <h1>Your passport to somewhere wonderful.</h1>
+        <p>Dream bigger with handpicked escapes in Bali, Dubai, Switzerland, Thailand, and beyond.</p>
+        <div class="hero-buttons">
+          <a class="btn" href="#international">Explore international trips</a>
+          <a class="btn btn-light" href="#support">Plan with support</a>
+        </div>
+      </div>
+    </article>
 
-<section class="about">
- <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1000&q=80" alt="Beautiful resort swimming pool">
- <div><span class="tag">TRAVEL WITH CONFIDENCE</span><h2>Your kind of trip. Your kind of magic.</h2><p>Discover handpicked properties, transparent prices and stays that make every trip feel special. Whether it is a family holiday, a romantic escape or a festive celebration, find your perfect place with Havenly.</p><div class="benefits"><span>✓ Handpicked stays</span><span>✓ Clear pricing</span><span>✓ Flexible options</span><span>✓ Helpful support</span></div><br><a href="#hotels"><button class="primary">Explore Stays ↗</button></a></div>
-</section>
+    <button class="hero-arrow hero-prev" aria-label="Previous banner" onclick="changeHero(-1)">‹</button>
+    <button class="hero-arrow hero-next" aria-label="Next banner" onclick="changeHero(1)">›</button>
+    <div class="hero-dots" id="heroDots" aria-label="Choose banner">
+      <button class="hero-dot active" aria-label="Banner 1" onclick="goHero(0)"></button>
+      <button class="hero-dot" aria-label="Banner 2" onclick="goHero(1)"></button>
+      <button class="hero-dot" aria-label="Banner 3" onclick="goHero(2)"></button>
+      <button class="hero-dot" aria-label="Banner 4" onclick="goHero(3)"></button>
+    </div>
+  </section>
 
-<section id="reviews">
- <div class="heading"><div><span class="tag">GUEST STORIES</span><h2>Love where you stay.</h2></div><button class="primary" onclick="showModal('review')">Write a Review ✎</button></div>
- <div class="slider">
-  <article class="reviews"><h3>Aarav Kapoor</h3><p class="muted">Family trip · Goa</p><div class="stars">★★★★★</div><blockquote>“The family package made everything easy. The kids loved the pool and we had a wonderful holiday.”</blockquote><p class="muted">Casa Solana Retreat</p></article>
-  <article class="reviews"><h3>Meera Shah</h3><p class="muted">Weekend trip · Jaipur</p><div class="stars">★★★★★</div><blockquote>“Beautiful details, a warm welcome and a perfect location for exploring the city.”</blockquote><p class="muted">The Pink Courtyard</p></article>
-  <article class="reviews"><h3>Rohan Nair</h3><p class="muted">Couple trip · Kerala</p><div class="stars">★★★★★</div><blockquote>“A peaceful escape with beautiful views. Everything looked just as lovely as expected.”</blockquote><p class="muted">Backwater Bloom</p></article>
- </div>
- <p class="notice">These sample testimonials and ratings are illustrative and are not verified customer reviews.</p>
-</section>
+  <!-- HOTEL SEARCH -->
+  <div class="container search-wrap" id="search">
+    <form class="search-box" id="searchForm">
+      <div class="field">
+        <label for="destination">DESTINATION</label>
+        <input id="destination" name="destination" placeholder="City, hotel, or destination" required>
+      </div>
+      <div class="field">
+        <label for="checkin">CHECK-IN</label>
+        <input type="date" id="checkin" name="checkin" required>
+      </div>
+      <div class="field">
+        <label for="checkout">CHECK-OUT</label>
+        <input type="date" id="checkout" name="checkout" required>
+      </div>
+      <div class="field">
+        <label for="guests">GUESTS</label>
+        <select id="guests" name="guests">
+          <option>1 guest</option>
+          <option selected>2 guests</option>
+          <option>3 guests</option>
+          <option>4 guests</option>
+          <option>5+ guests</option>
+        </select>
+      </div>
+      <button class="btn" type="submit">Search stays →</button>
+    </form>
+  </div>
 
-<div class="rating-band">
- <div><strong>4.9/5 ⭐</strong><span>Illustrative guest rating</span></div>
- <div><strong>1,200+</strong><span>Curated stay listings</span></div>
- <div><strong>24/7</strong><span>Travel support goal</span></div>
- <div><strong>100%</strong><span>Made for memorable trips</span></div>
-</div>
+  <!-- HANDPICKED STAYS -->
+  <section id="hotels">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Handpicked for you</span>
+        <h2>Stays worth the journey</h2>
+        <p>Places we love for their atmosphere, comfort, and character.</p>
+      </div>
 
-<div class="cta">
- <div><h2>Your next great story awaits.</h2><p>Join Havenly for travel inspiration and special offers.</p></div>
- <button class="primary" onclick="showModal('signup')">Create Free Account ↗</button>
-</div>
+      <div class="card-grid">
+        <article class="stay-card">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=80" alt="Luxury resort swimming pool" loading="lazy">
+          <div class="card-body">
+            <div class="card-top"><h3>The Palm Retreat</h3><span class="rating">★ 4.9</span></div>
+            <p class="location">📍 Goa, India · Beach resort</p>
+            <p>A relaxed coastal escape with tropical gardens and beautiful poolside views.</p>
+            <div class="card-bottom"><div class="price">₹6,500<small>per night · sample price</small></div><button class="btn small-btn" onclick="bookStay('The Palm Retreat')">Enquire</button></div>
+          </div>
+        </article>
+
+        <article class="stay-card">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80" alt="Luxury hotel and pool" loading="lazy">
+          <div class="card-body">
+            <div class="card-top"><h3>Azure Grand Resort</h3><span class="rating">★ 4.8</span></div>
+            <p class="location">📍 Udaipur, India · Luxury</p>
+            <p>Elegant hospitality, peaceful surroundings, and a memorable stay experience.</p>
+            <div class="card-bottom"><div class="price">₹8,200<small>per night · sample price</small></div><button class="btn small-btn" onclick="bookStay('Azure Grand Resort')">Enquire</button></div>
+          </div>
+        </article>
+
+        <article class="stay-card">
+          <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=900&q=80" alt="Cosy boutique hotel room" loading="lazy">
+          <div class="card-body">
+            <div class="card-top"><h3>Mountain Nest</h3><span class="rating">★ 4.7</span></div>
+            <p class="location">📍 Manali, India · Mountain stay</p>
+            <p>A cosy retreat for cool mornings, mountain air, and scenic views.</p>
+            <div class="card-bottom"><div class="price">₹4,000<small>per night · sample price</small></div><button class="btn small-btn" onclick="bookStay('Mountain Nest')">Enquire</button></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERNATIONAL DESTINATIONS -->
+  <section class="light-section" id="international">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Beyond borders</span>
+        <h2>International picks</h2>
+        <p>Dream of somewhere new. Start with these inspiring destinations.</p>
+      </div>
+
+      <div class="slider">
+        <article class="stay-card">
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=900&q=80" alt="Tropical Bali landscape" loading="lazy">
+          <div class="card-body">
+            <div class="card-top"><h3>Bali, Indonesia</h3><span class="rating">Island escape</span></div>
+            <p class="location">🌴 Beaches · Temples · Villas</p>
+            <p>Find tropical scenery, cultural experiences, and relaxing island stays.</p>
+            <div class="card-bottom"><span class="price">Explore Bali<small>International destination</small></span><button class="btn small-btn" onclick="internationalTrip('Bali, Indonesia')">Explore</button></div>
+          </div>
+        </article>
+
+        <article class="stay-card">
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80" alt="Dubai skyline" loading="lazy">
+          <div class="card-body">
+            <div class="card-top"><h3>Dubai, UAE</h3><span class="rating">City break</span></div>
+            <p class="location">🏙️ Skyline · Shopping · Desert</p>
+            <p>Discover modern city attractions, desert adventures, and luxury hotels.</p>
+            <div class="card-bottom"><span class="price">Explore Dubai<small>International destination</small></span><button class="btn small-btn" onclick="internationalTrip('Dubai, UAE')">Explore</button></div>
+          </div>
+        </article>
+
+        <article class="stay-card">
+          <img src="https://images.unsplash.com/photo-1504218727796-db522606b16f?auto=format&fit=crop&w=900&q=80" alt="Tropical Maldives resort" loading="lazy">
+          <div class="card-body">
+            <div class="card-top"><h3>Maldives</h3><span class="rating">Island luxury</span></div>
+            <p class="location">🌊 Overwater villas · Beaches</p>
+            <p>Make time for turquoise water, quiet beaches, and romantic escapes.</p>
+            <div class="card-bottom"><span class="price">Explore Maldives<small>International destination</small></span><button class="btn small-btn" onclick="internationalTrip('Maldives')">Explore</button></div>
+          </div>
+        </article>
+
+        <article class="stay-card">
+          <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=900&q=80" alt="Swiss mountain scenery" loading="lazy">
+          <div class="card-body">
+            <div class="card-top"><h3>Switzerland</h3><span class="rating">Mountain escape</span></div>
+            <p class="location">🏔️ Alps · Lakes · Scenic trains</p>
+            <p>Enjoy mountain landscapes, charming towns, and unforgettable views.</p>
+            <div class="card-bottom"><span class="price">Explore Switzerland<small>International destination</small></span><button class="btn small-btn" onclick="internationalTrip('Switzerland')">Explore</button></div>
+          </div>
+        </article>
+
+        <article class="stay-card">
+          <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=80" alt="Bangkok city at night" loading="lazy">
+          <div class="card-body">
+            <div class="card-top"><h3>Thailand</h3><span class="rating">Culture & coast</span></div>
+            <p class="location">🍜 Food · Culture · Beaches</p>
+            <p>Combine vibrant city life with beautiful islands and local experiences.</p>
+            <div class="card-bottom"><span class="price">Explore Thailand<small>International destination</small></span><button class="btn small-btn" onclick="internationalTrip('Thailand')">Explore</button></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section id="ranges">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Find your kind of stay</span>
+        <h2>Explore our collections</h2>
+        <p>Whether you want luxury or simplicity, there is a stay for your style.</p>
+      </div>
+
+      <div class="range-grid">
+        <a href="#hotels" class="range-card" style="background-image:url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=700&q=80')"><div><h3>Luxury Stays</h3><p>Elevated comfort and service</p></div></a>
+        <a href="#hotels" class="range-card" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80')"><div><h3>Beach Escapes</h3><p>Sun, sand, and sea</p></div></a>
+        <a href="#hotels" class="range-card" style="background-image:url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=700&q=80')"><div><h3>Nature Retreats</h3><p>Space to slow down</p></div></a>
+        <a href="#international" class="range-card" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=700&q=80')"><div><h3>International</h3><p>Discover another world</p></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section class="light-section" id="offers">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">A little something extra</span>
+        <h2>Offers for your next getaway</h2>
+        <p>Make your next journey feel even more rewarding.</p>
+      </div>
+
+      <div class="offer-grid">
+        <article class="offer-card">
+          <span class="eyebrow">Your first journey</span>
+          <h3>Welcome to Havenly</h3>
+          <p>Discover stays that match your travel style. Ask our team about offers for your trip.</p>
+          <button class="btn" onclick="openModal('signup')">Get started</button>
+        </article>
+        <article class="offer-card">
+          <span class="eyebrow">A longer escape</span>
+          <h3>Make more of your stay</h3>
+          <p>Planning a longer holiday? Contact our support team to discuss available options.</p>
+          <a class="btn" href="#support">Talk to our team</a>
+        </article>
+      </div>
+      <p class="notice" style="text-align:center;margin-top:16px">Offers are illustrative. Availability, eligibility, and final prices must be confirmed before booking.</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Kind words</span>
+        <h2>Travel should leave you smiling</h2>
+        <p>A sample of the experiences Havenly hopes to help create.</p>
+      </div>
+      <div class="review-grid">
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>“The site made it easy to explore different types of stays. I loved how the destinations were organised.”</p>
+          <div class="review-person">A Happy Traveller<small>Sample testimonial</small></div>
+        </article>
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>“The international collection gave me inspiration for my next holiday. The layout is clean and simple.”</p>
+          <div class="review-person">An Explorer<small>Sample testimonial</small></div>
+        </article>
+        <article class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>“I want a trip that feels special, and having different collections makes it easier to start planning.”</p>
+          <div class="review-person">A Weekend Traveller<small>Sample testimonial</small></div>
+        </article>
+      </div>
+      <p class="notice" style="text-align:center">These are example testimonials, not verified customer reviews.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-band">
+    <div class="container stats-grid">
+      <div><h3>Curated</h3><p>Stay inspiration</p></div>
+      <div><h3>Worldwide</h3><p>Destination ideas</p></div>
+      <div><h3>Personal</h3><p>Travel planning</p></div>
+      <div><h3>Here to help</h3><p>Guest support</p></div>
+    </div>
+  </div>
+
+  <!-- CALL TO ACTION -->
+  <section class="cta">
+    <div class="container">
+      <h2>Your next great story starts somewhere.</h2>
+      <p>Explore a new destination or get in touch to begin planning your next escape.</p>
+      <a class="btn btn-light" href="#international">Explore destinations</a>
+      <a class="btn btn-light" href="#support" style="margin-left:8px">Contact support</a>
+    </div>
+  </section>
+
+  <!-- CONTACT SUPPORT -->
+  <section class="support-section" id="support">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">We're here to help</span>
+        <h2>Contact Havenly support</h2>
+        <p>Questions about a stay or planning an international trip? Reach out to our team.</p>
+      </div>
+
+      <div class="support-grid">
+        <div class="contact-cards">
+          <article class="contact-card">
+            <div class="contact-icon">✉️</div>
+            <h3>Email support</h3>
+            <p><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
+          </article>
+          <article class="contact-card">
+            <div class="contact-icon">📞</div>
+            <h3>Call us</h3>
+            <p><a href="tel:+910000000000">+91 YOUR PHONE NUMBER</a></p>
+          </article>
+          <article class="contact-card">
+            <div class="contact-icon">📍</div>
+            <h3>Our office</h3>
+            <p>YOUR OFFICE ADDRESS, CITY, INDIA</p>
+          </article>
+          <article class="contact-card">
+            <div class="contact-icon">🕒</div>
+            <h3>Support hours</h3>
+            <p>YOUR SUPPORT HOURS</p>
+          </article>
+        </div>
+
+        <form class="support-form" id="supportForm">
+          <h3>Send us a message</h3>
+          <p>Tell us what you need help with and we'll guide you.</p>
+          <div class="field">
+            <label for="supportName">YOUR NAME</label>
+            <input id="supportName" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="field">
+            <label for="supportEmail">EMAIL ADDRESS</label>
+            <input id="supportEmail" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field">
+            <label for="supportTopic">WHAT CAN WE HELP WITH?</label>
+            <select id="supportTopic" name="topic">
+              <option>Hotel enquiry</option>
+              <option>International trip</option>
+              <option>Booking assistance</option>
+              <option>General question</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="supportMessage">MESSAGE</label>
+            <textarea id="supportMessage" name="message" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button class="btn" type="submit" style="width:100%">Send message →</button>
+          <p class="notice">Demo form: messages are not sent until you connect a form service or backend.</p>
+        </form>
+      </div>
+    </div>
+  </section>
 </main>
 
+<!-- FOOTER -->
 <footer>
- <div class="footer-grid">
-  <div><h3>✳ havenly.</h3><p>Thoughtful stays for curious travellers. Find a place to relax, explore and feel at home.</p></div>
-  <div><h4>Explore</h4><a href="#hotels">Hotels</a><a href="#ranges">Hotel ranges</a><a href="#offers">Special offers</a><a href="#reviews">Guest reviews</a></div>
-  <div><h4>Contact</h4><p>Email: hello@example.com</p><p>Phone: +91 98765 43210</p><p>Replace these demo details before publishing.</p></div>
- </div>
- <div class="copyright">© 2026 Havenly. Demo website. Real booking, payments and accounts are not connected.</div>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="#home">havenly<span>.</span></a>
+        <p>Discover stays that make the journey as memorable as the destination.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <div class="footer-links">
+          <a href="#hotels">Handpicked stays</a>
+          <a href="#international">International trips</a>
+          <a href="#ranges">Collections</a>
+          <a href="#offers">Offers</a>
+        </div>
+      </div>
+      <div>
+        <h3>Quick links</h3>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#support">Contact support</a>
+          <button class="text-button" style="text-align:left;color:#c3d3d6" onclick="openModal('login')">Log in</button>
+        </div>
+      </div>
+      <div>
+        <h3>Need help?</h3>
+        <div class="footer-links">
+          <a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a>
+          <a href="tel:+910000000000">+91 YOUR PHONE NUMBER</a>
+          <a href="#support">Contact our support team</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Havenly. All rights reserved. · Travel beautifully.</div>
+  </div>
 </footer>
 
-<div class="modal" id="modal">
- <div class="modal-box">
-  <button class="close" onclick="closeModal()">×</button>
-  <h2 id="modalTitle">Welcome to Havenly</h2>
-  <p id="modalDesc">Sign in to manage your trips.</p>
-  <form id="modalForm"></form>
-  <div class="switch" id="modalSwitch"></div>
- </div>
+<!-- LOGIN / SIGNUP MODAL -->
+<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle" onclick="modalBackdrop(event)">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close" onclick="closeModal()">×</button>
+    <h2 id="authTitle">Welcome to Havenly</h2>
+    <p id="authDescription">Sign in to start planning your next journey.</p>
+
+    <form id="authForm">
+      <div class="field" id="authNameField" style="display:none">
+        <label for="authName">YOUR NAME</label>
+        <input id="authName" name="name" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label for="authEmail">EMAIL ADDRESS</label>
+        <input id="authEmail" name="email" type="email" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label for="authPassword">PASSWORD</label>
+        <input id="authPassword" name="password" type="password" minlength="6" placeholder="At least 6 characters" required>
+      </div>
+      <button class="btn" type="submit" id="authSubmit">Log in</button>
+    </form>
+    <div class="modal-switch">
+      <span id="switchText">Don't have an account?</span>
+      <button class="text-button" id="switchAuth" onclick="switchAuthMode()">Sign up</button>
+    </div>
+    <p class="notice">Demo only: no account is created and no password is stored or sent.</p>
+  </div>
 </div>
 
 <script>
-const modal=document.getElementById('modal');
-const form=document.getElementById('modalForm');
-let currentMode='login';
-let selectedHotel='';
-let selectedPrice=0;
+/* HERO SLIDER */
+let heroIndex = 0;
+const heroSlides = document.querySelectorAll(".hero-slide");
+const heroDots = document.querySelectorAll(".hero-dot");
+let heroTimer;
 
-const today=new Date();
-const tomorrow=new Date(today);
-tomorrow.setDate(today.getDate()+1);
-const nextDay=new Date(today);
-nextDay.setDate(today.getDate()+2);
-const dateString=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-
-document.getElementById('checkin').min=dateString(today);
-document.getElementById('checkin').value=dateString(tomorrow);
-document.getElementById('checkout').min=dateString(nextDay);
-document.getElementById('checkout').value=dateString(nextDay);
-
-document.getElementById('checkin').addEventListener('change',()=>{
- const d=new Date(document.getElementById('checkin').value+'T12:00:00');
- d.setDate(d.getDate()+1);
- const min=dateString(d);
- const checkout=document.getElementById('checkout');
- checkout.min=min;
- if(checkout.value<min)checkout.value=min;
-});
-
-document.getElementById('searchForm').addEventListener('submit',e=>{
- e.preventDefault();
- const destination=document.getElementById('destination').value.trim().toLowerCase();
- const hotels=[...document.querySelectorAll('.hotel')];
- let count=0;
- hotels.forEach(h=>{
-  const match=!destination||h.dataset.place.includes(destination);
-  h.style.display=match?'':'none';
-  if(match)count++;
- });
- document.getElementById('searchMessage').textContent=count
- ?'Showing '+count+' sample hotel(s). Prices and availability are not live.'
- :'No matching sample hotels. Try Goa, Jaipur, Manali, Kerala or Udaipur.';
- document.getElementById('hotels').scrollIntoView({behavior:'smooth'});
-});
-
-function showModal(mode){
- currentMode=mode;
- const title=document.getElementById('modalTitle');
- const desc=document.getElementById('modalDesc');
- const sw=document.getElementById('modalSwitch');
- let fields='';
-
- if(mode==='login'||mode==='signup'){
-  title.textContent=mode==='login'?'Welcome Back':'Create Your Account';
-  desc.textContent='Access your trips and save your favourite hotels.';
-  if(mode==='signup')fields+='<label>Full Name</label><input name="name" placeholder="Your full name" required>';
-  fields+='<label>Email Address</label><input name="email" type="email" placeholder="you@example.com" required>';
-  fields+='<label>Password</label><input name="password" type="password" minlength="8" placeholder="At least 8 characters" required>';
-  sw.innerHTML=mode==='login'?'New here? <a onclick="showModal(\\'signup\\')">Create account</a>':'Already registered? <a onclick="showModal(\\'login\\')">Log in</a>';
- }else if(mode==='booking'){
-  title.textContent='Booking Request';
-  desc.textContent='Selected hotel: '+selectedHotel+'. Rate: ₹'+selectedPrice+' per night. This is not a confirmed booking.';
-  fields+='<label>Full Name</label><input name="name" required placeholder="Your full name">';
-  fields+='<label>Email Address</label><input name="email" type="email" required placeholder="you@example.com">';
-  fields+='<label>Number of Guests</label><select name="guests"><option>2 Adults</option><option>1 Adult</option><option>Family</option><option>4 Adults</option></select>';
-  sw.innerHTML='<span class="notice">Demo only. No reservation will be created.</span>';
- }else if(mode==='review'){
-  title.textContent='Write a Review';
-  desc.textContent='Share your experience with other travellers.';
-  fields+='<label>Your Name</label><input name="name" required placeholder="Your name">';
-  fields+='<label>Rating</label><select name="rating"><option>★★★★★ - Excellent</option><option>★★★★☆ - Very Good</option><option>★★★☆☆ - Good</option><option>★★☆☆☆ - Fair</option><option>★☆☆☆☆ - Poor</option></select>';
-  fields+='<label>Your Review</label><textarea name="review" required placeholder="Tell us about your stay"></textarea>';
-  sw.innerHTML='<span class="notice">Demo only. Your review will not be published.</span>';
- }
-
- form.innerHTML=fields+'<button class="primary" type="submit">'+
- (mode==='login'?'Log In':mode==='signup'?'Create Account':mode==='booking'?'Send Booking Request':'Submit Review')+'</button>';
- modal.style.display='flex';
- form.onsubmit=e=>{
-  e.preventDefault();
-  if(mode==='login'||mode==='signup')alert('Demo website: authentication is not connected. No details were saved.');
-  else if(mode==='booking')alert('Demo website: booking service is not connected. No reservation was created.');
-  else alert('Demo website: your review was not saved or published.');
-  closeModal();
- };
+function goHero(index) {
+  heroIndex = (index + heroSlides.length) % heroSlides.length;
+  heroSlides.forEach((slide, i) => slide.classList.toggle("active", i === heroIndex));
+  heroDots.forEach((dot, i) => dot.classList.toggle("active", i === heroIndex));
+  restartHeroTimer();
 }
-function closeModal(){modal.style.display='none'}
-function book(name,price){selectedHotel=name;selectedPrice=price;showModal('booking')}
-function offer(code){alert('Demo offer code: '+code+'. Actual discount and eligibility are not configured.')}
-modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+function changeHero(direction) { goHero(heroIndex + direction); }
+function restartHeroTimer() {
+  clearInterval(heroTimer);
+  heroTimer = setInterval(() => goHero(heroIndex + 1), 5000);
+}
+restartHeroTimer();
+
+/* MOBILE NAVIGATION */
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("open");
+}
+function closeMenu() {
+  document.getElementById("navLinks").classList.remove("open");
+}
+
+/* SET MINIMUM DATES */
+const checkin = document.getElementById("checkin");
+const checkout = document.getElementById("checkout");
+const today = new Date();
+const todayString = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,"0")}-${String(today.getDate()).padStart(2,"0")}`;
+checkin.min = todayString;
+checkout.min = todayString;
+
+checkin.addEventListener("change", () => {
+  checkout.min = checkin.value || todayString;
+  if (checkout.value && checkout.value <= checkin.value) {
+    const nextDay = new Date(checkin.value + "T12:00:00");
+    nextDay.setDate(nextDay.getDate() + 1);
+    checkout.value = `${nextDay.getFullYear()}-${String(nextDay.getMonth()+1).padStart(2,"0")}-${String(nextDay.getDate()).padStart(2,"0")}`;
+  }
+});
+
+/* SEARCH DEMO */
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  if (checkout.value <= checkin.value) {
+    alert("Check-out must be after check-in.");
+    return;
+  }
+  const destination = document.getElementById("destination").value.trim();
+  const guests = document.getElementById("guests").value;
+  alert(
+    "Your search details:\nDestination: " + destination +
+    "\nCheck-in: " + checkin.value +
+    "\nCheck-out: " + checkout.value +
+    "\nGuests: " + guests +
+    "\n\nThis demo is not connected to live hotel inventory. Connect a booking provider to show real availability and prices."
+  );
+});
+
+/* HOTEL ENQUIRY */
+function bookStay(hotelName) {
+  document.getElementById("supportTopic").value = "Hotel enquiry";
+  document.getElementById("supportMessage").value = "I would like to enquire about " + hotelName + ". Please share availability and pricing.";
+  document.getElementById("support").scrollIntoView({ behavior: "smooth" });
+}
+
+/* INTERNATIONAL DESTINATION */
+function internationalTrip(destination) {
+  document.getElementById("destination").value = destination;
+  document.getElementById("supportTopic").value = "International trip";
+  document.getElementById("supportMessage").value = "I am interested in planning a trip to " + destination + ". Please share available options and estimated costs.";
+  document.getElementById("search").scrollIntoView({ behavior: "smooth", block: "center" });
+  setTimeout(() => document.getElementById("checkin").focus(), 500);
+}
+
+/* SUPPORT FORM DEMO */
+document.getElementById("supportForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  alert("Your form looks ready, but Havenly is not connected to a message service yet. To receive enquiries, connect Formspree or your own backend.");
+});
+
+/* AUTH MODAL DEMO */
+let authMode = "login";
+function openModal(mode) {
+  authMode = mode;
+  updateAuthModal();
+  document.getElementById("authModal").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+function closeModal() {
+  document.getElementById("authModal").classList.remove("show");
+  document.body.style.overflow = "";
+}
+function modalBackdrop(event) {
+  if (event.target.id === "authModal") closeModal();
+}
+function switchAuthMode() {
+  authMode = authMode === "login" ? "signup" : "login";
+  updateAuthModal();
+}
+function updateAuthModal() {
+  const isSignup = authMode === "signup";
+  document.getElementById("authTitle").textContent = isSignup ? "Create your account" : "Welcome back";
+  document.getElementById("authDescription").textContent = isSignup ? "Join Havenly and start discovering your next stay." : "Log in to start planning your next journey.";
+  document.getElementById("authNameField").style.display = isSignup ? "block" : "none";
+  document.getElementById("authName").required = isSignup;
+  document.getElementById("authSubmit").textContent = isSignup ? "Create account" : "Log in";
+  document.getElementById("switchText").textContent = isSignup ? "Already have an account?" : "Don't have an account?";
+  document.getElementById("switchAuth").textContent = isSignup ? "Log in" : "Sign up";
+}
+document.getElementById("authForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  alert("This is a frontend demo. Login and signup need a secure authentication backend before real accounts can be created.");
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeModal();
+});
+
+/* FOOTER YEAR */
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
